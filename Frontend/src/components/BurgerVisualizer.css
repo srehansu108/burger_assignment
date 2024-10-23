@@ -1,0 +1,37 @@
+.burger-visualizer {
+  text-align: center;
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1rem;
+  margin-top: 5rem;
+}
+
+.bread-top {
+  background-color: #F8B400;
+  height: 60px;
+  width: 30rem;
+  margin: 5px auto;
+  border-radius: 50% 50% 0 0;
+  position: relative;
+  border: 2px solid #C07A1F;
+}
+
+.bread-bottom {
+  background-color: #F8B400;
+  height: 40px;
+  width: 30rem;
+  margin: 5px auto;
+  border-radius: 0 0 20px 20px;
+  border: 2px solid #C07A1F;
+}
+
+.burger-slice {
+  height: 30px;
+  width: 29rem;
+  margin: 5px auto;
+  border-radius: 5px;
+  line-height: 30px;
+  text-align: center;
+  font-weight: bold;
+}

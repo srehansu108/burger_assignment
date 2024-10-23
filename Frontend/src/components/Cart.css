@@ -1,0 +1,35 @@
+/* src/components/Cart.css */
+.cart {
+  margin: 24px;
+  padding: 30px;
+  border: 3px solid #ffbf00;
+  border-radius: 25px;
+  background-color: #ffecd3;
+}
+  
+  .burger-summary {
+    margin-bottom: 15px;
+  }
+  
+  input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+  
+  .checkout-button {
+    padding: 10px;
+    background-color: #de9f09;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 10rem;
+  }
+  
+  .checkout-button:hover {
+    background-color: #6b4700;
+  }
+  
