@@ -55,4 +55,4 @@ const getOrderDetailsById = async (req, res) => {
 };
 
 // Export the functions
-module.exports = { createOrder, getNextOrderNumber, getOrderDetailsById };
+module.exports = { createOrder, generateOrderNumber, getOrderDetailsById };
