@@ -1,13 +1,15 @@
 // src/components/Cart.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
+import { toast, ToastContainer } from 'react-toastify'; // Import Toastify
+import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
 import './Cart.css';
 
 const Cart = ({ burger, totalPrice, quantity, updateQuantity }) => {
   const [orderSuccess, setOrderSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleQuantityChange = (e) => {
     updateQuantity(Number(e.target.value));
@@ -18,12 +20,12 @@ const Cart = ({ burger, totalPrice, quantity, updateQuantity }) => {
 
     // Validate mobile number
     if (!mobileNumber || !mobileNumber.match(/^\d{10}$/)) {
-      alert('Please enter a valid 10-digit mobile number.');
+      toast.error('Please enter a valid 10-digit mobile number.'); // Show error toast
       return;
     }
 
-    setLoading(true); 
-    setError(null); 
+    setLoading(true);
+    setError(null);
 
     // Calculate final price
     const finalPrice = totalPrice * quantity;
@@ -44,7 +46,7 @@ const Cart = ({ burger, totalPrice, quantity, updateQuantity }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          burgerSlices: burger, 
+          burgerSlices: burger,
           totalPrice,
           quantity,
           customerMobile: mobileNumber,
@@ -56,9 +58,9 @@ const Cart = ({ burger, totalPrice, quantity, updateQuantity }) => {
         const responseData = await response.json();
         setOrderSuccess(true);
         if (responseData.order && responseData.order.orderNumber) {
-          alert(`Order placed successfully! Your order number is: ${responseData.order.orderNumber}`);
+          toast.success(`Order placed successfully! Your order number is: ${responseData.order.orderNumber}`); // Show success toast
         } else {
-          alert('Order was placed, but no order number was returned.');
+          toast.warn('Order was placed, but no order number was returned.'); // Show warning toast
         }
       } else {
         const errorData = await response.json();
@@ -66,6 +68,7 @@ const Cart = ({ burger, totalPrice, quantity, updateQuantity }) => {
       }
     } catch (err) {
       setError(err.message);
+      toast.error(`Error: ${err.message}`); // Show error toast
     } finally {
       setLoading(false); // Stop loading
     }
@@ -105,6 +108,9 @@ const Cart = ({ burger, totalPrice, quantity, updateQuantity }) => {
         Get Details
       </button>
       {error && <p className="error-message">{error}</p>}
+
+      {/* Include the ToastContainer to render the toasts */}
+      <ToastContainer />
     </div>
   );
 };
